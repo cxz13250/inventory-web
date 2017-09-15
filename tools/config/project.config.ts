@@ -30,6 +30,13 @@ export class ProjectConfig extends SeedConfig {
     this.APP_ASSETS = [
       // {src: `${this.APP_SRC}/your-path-to-lib/libs/jquery-ui.js`, inject: true, vendor: false}
       // {src: `${this.CSS_SRC}/path-to-lib/test-lib.css`, inject: true, vendor: false},
+      { src: `${this.APP_SRC}/js/adminlte.min.js`,inject: true, vendor:true },
+      { src: `${this.APP_SRC}/js/bootstrap.min.js`,inject: true, vendor:true },
+      { src: `${this.APP_SRC}/js/jquery.min.js`, inject: true, vendor: false },
+
+      { src: `${this.CSS_SRC}/AdminLTE.min.css`, inject: true, vendor: false },
+      { src: `${this.CSS_SRC}/bootstrap.min.css`, inject: true, vendor: false },
+      { src: `${this.CSS_SRC}/_all-skins.css`, inject: true, vendor: false },
     ];
 
     this.ROLLUP_INCLUDE_DIR = [
