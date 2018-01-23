@@ -1,0 +1,118 @@
+<div class="content-wrapper" style="min-height: 960px;">
+  <section class="content-header">
+    <h1>
+      {{label}}
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a href="#">
+          <i class="fa fa-dashboard"></i>首页
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/custom/list']">客户列表</a>
+      </li>
+      <li class="active">
+        <a [routerLink]="['/custom/detail']">{{label}}</a>
+      </li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <div class="box-header"></div>
+          <form class="form-horizontal">
+            <div class="box-body">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputName" class="col-sm-3 control-label" style="padding-top: 7px">客户姓名</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="exampleInputName" name="exampleInputName" class="form-control" placeholder="请输入客户姓名" [(ngModel)]="custom.name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputMobile" class="col-sm-3 control-label" style="padding-top: 7px">客户手机</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="exampleInputMobile" name="exampleInputMobile" class="form-control" placeholder="请输入客户手机" [(ngModel)]="custom.mobile">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail" class="col-sm-3 control-label" style="padding-top: 7px">客户邮箱</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="exampleInputEmail" name="exampleInputEmail" class="form-control" placeholder="请输入客户邮箱" [(ngModel)]="custom.email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputLevel" class="col-sm-3 control-label" style="padding-top: 7px">客户等级</label>
+                  <div class="col-sm-9">
+                    <select id="exampleInputLevel" name="exampleInputLevel" class="form-control" [(ngModel)]="custom.level">
+                      <option value="-1">请选择客户级别</option>
+                      <option *ngFor="let level of levels" value="{{level.id}}">{{level.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputType" class="col-sm-3 control-label" style="padding-top: 7px">客户类型</label>
+                  <div class="col-sm-9">
+                    <select id="exampleInputType" name="exampleInputType" class="form-control" [(ngModel)]="custom.type">
+                      <option value="-1">请选择客户类型</option>
+                      <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputAddress" class="col-sm-3 control-label" style="padding-top: 7px">客户地址</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="exampleInputAddress" name="exampleInputAddress" class="form-control" placeholder="请输入客户地址" [(ngModel)]="custom.address">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputCode" class="col-sm-3 control-label" style="padding-top: 7px">客户邮编</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="exampleInputCode" name="exampleInputCode" class="form-control" placeholder="请输入客户邮编" [(ngModel)]="custom.postCode">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputLimit" class="col-sm-3 control-label" style="padding-top: 7px">应收额度</label>
+                  <div class="col-sm-9">
+                    <input type="number" id="exampleInputLimit" name="exampleInputLimit" class="form-control" placeholder="请输入应收额度" [(ngModel)]="custom.receiveLimit">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputReceive" class="col-sm-3 control-label" style="padding-top: 7px">应收款项</label>
+                  <div class="col-sm-9">
+                    <input type="number" id="exampleInputReceive" name="exampleInputReceive" class="form-control" placeholder="请输入应付款项" [(ngModel)]="custom.receive">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPay" class="col-sm-3 control-label" style="padding-top: 7px">应付款项</label>
+                  <div class="col-sm-9">
+                    <input type="number" id="exampleInputPay" name="exampleInputPay" class="form-control" placeholder="请输入应付款项" [(ngModel)]="custom.pay">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputSale" class="col-sm-3 control-label" style="padding-top: 7px">默认业务员</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="exampleInputSale" name="exampleInputSale" class="form-control" placeholder="请输入默认业务员" [(ngModel)]="custom.salesman">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-3"></div>
+                  <div class="col-md-6">
+                    <button class="btn btn-primary" (click)="save()">保存</button>
+                    <button class="btn btn-danger" (click)="delete()" *ngIf="edit&&custom.pay==0&&custom.receive==0">删除</button>
+                    <button class="btn btn-default" (click)="goBack()">返回</button>
+                  </div>
+                  <div class="col-md-3"></div>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

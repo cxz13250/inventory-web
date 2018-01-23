@@ -1,0 +1,94 @@
+<div class="content-wrapper" style="min-height: 960px;">
+  <section class="content-header">
+    <h1>
+      赠送单列表
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a [routerLink]="['/main']">
+          <i class="fa fa-dashboard"></i>首页
+        </a>
+      </li>
+      <li class="active">
+        <a [routerLink]="['/stock/complimentary/list']">赠送单列表</a>
+      </li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <!--<div class="box-header">-->
+          <!--</div>-->
+          <div class="box-body">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="dataTables_length" id="example1_length">
+                    <label>
+                      <a class="btn btn-primary" [routerLink]="['/stock/complimentary/detail']" *ngIf="create">添加赠送单</a>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="dataTables_filter" id="example1_filter">
+                    <label>Search:
+                      <input class="input input-sm" type="search" [(ngModel)]="keyword" (keyup.enter)="search()">
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <table id="example1" class="table table-bordered table-striped dataTable" [(mfSortOrder)]="sortOrder" [(mfSortBy)]="sortBy"
+                         [mfRowsOnPage]="rowsOnPage" [mfData]="list" (mfOnPageChange)="onPageChange($event)"
+                         [mfActivePage]="activePage" [mfIsServerPagination]="true" #mf="mfDataTable"
+                         [(mfAmountOfRows)]="itemsTotal" (mfSortOrderChange)="onSortOrder($event)" style="border: 1px solid #f4f4f4;">
+                    <thead>
+                    <tr role="row">
+                      <th width="10%">编号</th>
+                      <th width="20%">客户</th>
+                      <th width="20%">总额</th>
+                      <th width="20%">创建时间</th>
+                      <th width="10%">状态</th>
+                      <th width="20%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr role="row" *ngIf="itemsTotal==0">
+                      <td colspan="6" class="no-data-prompt">暂无数据</td>
+                    </tr>
+                    <tr role="row" *ngFor="let com of list">
+                      <td class="pointer">{{com.id}}</td>
+                      <td>{{com.customName}}</td>
+                      <td>{{com.total}}</td>
+                      <td>{{com.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+                      <td>{{com.status | orderStatus}}</td>
+                      <td><a class="btn btn-info btn-sm" [routerLink]="['/stock/complimentary/detail']" [queryParams]="{id:com.id}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        详情</a>
+                        <a class="btn btn-primary btn-sm" (click)="approve(com)" *ngIf="check&&com.status==checkStatus">批准</a>
+                        <a class="btn btn-warning btn-sm" (click)="reject(com)" *ngIf="check&&com.status==checkStatus">否决</a>
+                      </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                      <td colspan="6">
+                        <mfBootstrapPaginator class="pull-right"></mfBootstrapPaginator>
+                      </td>
+                    </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+
+

@@ -1,0 +1,67 @@
+<div class="content-wrapper" style="min-height: 960px;">
+  <section class="content-header">
+    <h1>
+      {{label}}
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a href="#">
+          <i class="fa fa-dashboard"></i>首页
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/category/list']">分类列表</a>
+      </li>
+      <li class="active">
+        <a [routerLink]="['/category/detail']">{{label}}</a>
+      </li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <div class="box-header"></div>
+          <form class="form-horizontal">
+            <div class="box-body">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputName" class="col-sm-3 control-label" style="padding-top: 7px">类别名称</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="exampleInputName" name="exampleInputName" class="form-control" placeholder="请输入类别名称" [(ngModel)]="category.name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputCategory" class="col-sm-3 control-label" style="padding-top: 7px">父类名称</label>
+                  <div class="col-sm-9">
+                    <select id="exampleInputCategory" name="exampleInputCategory" class="form-control" [(ngModel)]="category.superId">
+                      <option value="-1">请选择父类别</option>
+                      <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputExtra" class="col-sm-3 control-label" style="padding-top: 7px">类别描述</label>
+                  <div class="col-sm-9">
+                    <textarea id="exampleInputExtra" name="exampleInputExtra" class="form-control" placeholder="请输入类别描述" rows="5" [(ngModel)]="category.description"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-3"></div>
+                  <div class="col-md-6">
+                    <button class="btn btn-primary" (click)="save()">保存</button>
+                    <button class="btn btn-danger" (click)="delete()" *ngIf="edit&&category.canDelete">删除</button>
+                    <button class="btn btn-default" (click)="goBack()">返回</button>
+                  </div>
+                  <div class="col-md-3"></div>
+                </div>
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

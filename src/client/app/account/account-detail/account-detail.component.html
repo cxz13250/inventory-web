@@ -1,0 +1,70 @@
+<div class="content-wrapper" style="min-height: 960px;">
+  <section class="content-header">
+    <h1>
+      {{label}}
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a href="#">
+          <i class="fa fa-dashboard"></i>首页
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/account/list']">账户列表</a>
+      </li>
+      <li class="active">
+        <a [routerLink]="['/account/detail']">{{label}}</a>
+      </li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <div class="box-header"></div>
+          <form class="form-horizontal">
+            <div class="box-body">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputName" class="col-sm-3 control-label" style="padding-top: 7px">账户名称</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="exampleInputName" name="exampleInputName" class="form-control" placeholder="请输入账户名称" [(ngModel)]="account.name" required="true">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputBank" class="col-sm-3 control-label" style="padding-top: 7px">所属银行</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="exampleInputBank" name="exampleInputBank" class="form-control" placeholder="请输入所属银行" [(ngModel)]="account.bank" [disabled]="true">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputBankNum" class="col-sm-3 control-label" style="padding-top: 7px">银行卡号</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="exampleInputBankNum" name="exampleInputBankNum" class="form-control" placeholder="请输入银行卡号" [(ngModel)]="account.bankNum" (blur)="getBank()">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputCost" class="col-sm-3 control-label" style="padding-top: 7px">账户余额</label>
+                  <div class="col-sm-9">
+                    <input type="number" id="exampleInputCost" name="exampleInputCost" class="form-control" placeholder="请输入账户余额" [(ngModel)]="account.balance">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-3"></div>
+                  <div class="col-md-6">
+                    <button class="btn btn-primary" (click)="save()">保存</button>
+                    <button class="btn btn-danger" (click)="delete()" *ngIf="edit && account.balance==0">删除</button>
+                    <button class="btn btn-default" (click)="goBack()">返回</button>
+                  </div>
+                  <div class="col-md-3"></div>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

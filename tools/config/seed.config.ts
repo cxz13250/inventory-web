@@ -114,9 +114,9 @@ export class SeedConfig {
   COVERAGE_PORT = argv['coverage-port'] || 4004;
 
   /**
-  * The path to the coverage output
-  * NB: this must match what is configured in ./karma.conf.js
-  */
+   * The path to the coverage output
+   * NB: this must match what is configured in ./karma.conf.js
+   */
   COVERAGE_DIR = 'coverage_js';
   COVERAGE_TS_DIR = 'coverage';
 
@@ -176,7 +176,7 @@ export class SeedConfig {
    * `index.html`.
    * @type {string}
    */
-  APP_TITLE = 'Welcome to angular-seed!';
+  APP_TITLE = '灯具厂库存管理系统';
 
   /**
    * Tracking ID.
@@ -356,7 +356,7 @@ export class SeedConfig {
    */
   ENABLE_SCSS = ['true', '1'].indexOf(
     `${process.env.ENABLE_SCSS}`.toLowerCase()
-  ) !== -1 ||
+    ) !== -1 ||
     argv['scss'] ||
     false;
 
@@ -454,10 +454,10 @@ export class SeedConfig {
   ROLLUP_INCLUDE_DIR: string[] = ['node_modules/**'];
 
   /**
-  * List of named export Object key value pairs
-  * key: dependencie file
-  * value: exported Objects
-  */
+   * List of named export Object key value pairs
+   * key: dependencie file
+   * value: exported Objects
+   */
   ROLLUP_NAMED_EXPORTS: any[] = [];
 
   /**
@@ -634,9 +634,9 @@ export class SeedConfig {
   COLOR_GUARD_WHITE_LIST: [string, string][] = [];
 
   /**
-  * Browser-sync middleware configurations array.
-  * @type {Array}
-  */
+   * Browser-sync middleware configurations array.
+   * @type {Array}
+   */
   PROXY_MIDDLEWARE: any[] = [];
 
   /**
@@ -802,8 +802,8 @@ export class SeedConfig {
   }
 
   /**
- * Convert named rollup array to object
- */
+   * Convert named rollup array to object
+   */
   getRollupNamedExports() {
     let namedExports = {};
     this.ROLLUP_NAMED_EXPORTS.map(namedExport => {

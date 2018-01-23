@@ -1,0 +1,89 @@
+<div class="content-wrapper" style="min-height: 960px;">
+  <section class="content-header">
+    <h1>
+      分类列表
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a [routerLink]="['/main']">
+          <i class="fa fa-dashboard"></i>首页
+        </a>
+      </li>
+      <li class="active">
+        <a [routerLink]="['/category/list']">类型列表</a>
+      </li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <!--<div class="box-header">-->
+          <!--</div>-->
+          <div class="box-body">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="dataTables_length" id="example1_length">
+                    <label>
+                      <a class="btn btn-primary" [routerLink]="['/category/detail']">添加类型</a>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="dataTables_filter" id="example1_filter">
+                    <label>Search:
+                      <input class="input input-sm" type="search" [(ngModel)]="keyword" (keyup.enter)="search()">
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <table id="example1" class="table table-bordered table-striped dataTable"  [(mfSortOrder)]="sortOrder" [(mfSortBy)]="sortBy"
+                         [mfRowsOnPage]="rowsOnPage" [mfData]="categories" (mfOnPageChange)="onPageChange($event)"
+                         [mfActivePage]="activePage" [mfIsServerPagination]="true" #mf="mfDataTable"
+                         [(mfAmountOfRows)]="itemsTotal" (mfSortOrderChange)="onSortOrder($event)" style="border: 1px solid #f4f4f4;">
+                    <thead>
+                    <tr role="row">
+                      <th>编号</th>
+                      <th>名称</th>
+                      <th>父类编号</th>
+                      <th>父类名称</th>
+                      <th>创建时间</th>
+                      <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr role="row" *ngIf="itemsTotal==0">
+                      <td colspan="6" class="no-data-prompt">暂无数据</td>
+                    </tr>
+                    <tr role="row" *ngFor="let category of categories">
+                      <td class="pointer">{{category.id}}</td>
+                      <td>{{category.name}}</td>
+                      <td>{{validate(category.superId,undefined)}}</td>
+                      <td>{{validate(undefined,category.superName)}}</td>
+                      <td>{{category.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                      <td><a class="btn btn-info btn-sm" style="width: 80%" [routerLink]="['/category/detail']" [queryParams]="{categoryId:category.id}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        详情</a>
+                      </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                      <td colspan="6">
+                        <mfBootstrapPaginator class="pull-right"></mfBootstrapPaginator>
+                      </td>
+                    </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+

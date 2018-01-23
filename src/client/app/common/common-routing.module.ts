@@ -4,13 +4,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonComponent } from './common.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 import { LoginComponent } from './login/login.component';
 @NgModule({
   imports:[
     RouterModule.forChild([{
-      path: 'common', component: CommonComponent,children:[
-        {path: 'login', component: LoginComponent }
+      path: '', component: CommonComponent,children:[
+        { path: '', redirectTo: 'login', pathMatch: 'full' },
+        { path: 'login', component: LoginComponent },
+        { path: 'main', component: MainPageComponent }
       ]
     }])
   ]

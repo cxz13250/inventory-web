@@ -1,0 +1,92 @@
+<div class="content-wrapper" style="min-height: 960px;">
+  <section class="content-header">
+    <h1>
+      {{label}}
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a [routerLink]="['/main']">
+          <i class="fa fa-dashboard"></i>首页
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/goods/list']">商品列表</a>
+      </li>
+      <li class="active">
+        <a [routerLink]="['/goods/detail']">{{label}}</a>
+      </li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <div class="box-header"></div>
+          <form class="form-horizontal" *ngIf="goods">
+            <div class="box-body">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputName" class="col-sm-3 control-label" style="padding-top: 7px">商品名称</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="exampleInputName" name="exampleInputName" class="form-control" placeholder="请输入商品名称" [(ngModel)]="goods.name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputModel" class="col-sm-3 control-label" style="padding-top: 7px">商品型号</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="exampleInputModel" name="exampleInputModel" class="form-control" placeholder="请输入商品型号" [(ngModel)]="goods.model">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputCategory" class="col-sm-3 control-label" style="padding-top: 7px">商品分类</label>
+                  <div class="col-sm-9">
+                    <select id="exampleInputCategory" name="exampleInputCategory" class="form-control" [(ngModel)]="goods.categoryId">
+                      <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputCost" class="col-sm-3 control-label" style="padding-top: 7px">商品进价</label>
+                  <div class="col-sm-9">
+                    <input type="number" id="exampleInputCost" name="exampleInputCost" class="form-control" placeholder="请输入商品进价" [(ngModel)]="goods.costPrice">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputRetail" class="col-sm-3 control-label" style="padding-top: 7px">商品售价</label>
+                  <div class="col-sm-9">
+                    <input type="number" id="exampleInputRetail" name="exampleInputRetail" class="form-control" placeholder="请输入商品售价" [(ngModel)]="goods.retailPrice">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputCostC" class="col-sm-3 control-label" style="padding-top: 7px">最近进价</label>
+                  <div class="col-sm-9">
+                    <input type="number" id="exampleInputCostC" name="exampleInputCostC" class="form-control" placeholder="请输入最近售价" [(ngModel)]="goods.currentCostPrice">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputRetailC" class="col-sm-3 control-label" style="padding-top: 7px">最近售价</label>
+                  <div class="col-sm-9">
+                    <input type="number" id="exampleInputRetailC" name="exampleInputRetailC" class="form-control" placeholder="请输入最近售价" [(ngModel)]="goods.currentRetailPrice">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-3" style="text-align:right">
+                    <span class="label label-warning" *ngIf="goods.warning">库存报警</span>
+                  </div>
+                  <div class="col-md-6">
+                    <button class="btn btn-primary" (click)="save()">保存</button>
+                    <button class="btn btn-danger" (click)="delete()" *ngIf="edit && goods.inventory == 0">删除</button>
+                    <button class="btn btn-default" (click)="goBack()">返回</button>
+                  </div>
+                  <div class="col-md-3"></div>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

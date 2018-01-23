@@ -1,0 +1,86 @@
+<div class="content-wrapper" style="min-height: 960px;">
+  <section class="content-header">
+    <h1>
+      用户列表
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a [routerLink]="['/main']">
+          <i class="fa fa-dashboard"></i>首页
+        </a>
+      </li>
+      <li class="active">
+        <a [routerLink]="['/user/list']">用户列表</a>
+      </li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <!--<div class="box-header">-->
+          <!--</div>-->
+          <div class="box-body">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="dataTables_length" id="example1_length">
+                    <label>
+                      <a class="btn btn-primary" [routerLink]="['/user/detail']">添加用户</a>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="dataTables_filter" id="example1_filter">
+                    <label>Search:
+                      <input class="input input-sm" type="search" (keyup.enter)="search()">
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <table id="example1" class="table table-bordered table-striped dataTable" style="border: 1px solid #f4f4f4;">
+                    <thead>
+                    <tr role="row">
+                      <th width="18%">编号</th>
+                      <th width="18%">姓名</th>
+                      <th width="18%">邮箱</th>
+                      <th width="18%">身份</th>
+                      <th width="18%">创建时间</th>
+                      <th width="10">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr role="row" *ngIf="!users">
+                      <td colspan="6" class="no-data-prompt">暂无数据</td>
+                    </tr>
+                    <tr role="row" *ngFor="let user of users">
+                      <td class="pointer">{{user.id}}</td>
+                      <td>{{user.name}}</td>
+                      <td>{{user.roleName}}</td>
+                      <td>{{user.email}}</td>
+                      <td>{{user.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                      <td><a class="btn btn-info btn-sm" style="width: 80%" [routerLink]="['/user/detail']" [queryParams]="{userId:user.id}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        详情</a>
+                      </td>
+                    </tr>
+                    </tbody>
+                    <!--<tfoot>-->
+                    <!--<tr>-->
+                      <!--<td colspan="5">-->
+                        <!--<mfBootstrapPaginator class="pull-right"></mfBootstrapPaginator>-->
+                      <!--</td>-->
+                    <!--</tr>-->
+                    <!--</tfoot>-->
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+

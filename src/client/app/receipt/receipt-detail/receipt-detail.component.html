@@ -1,0 +1,132 @@
+<div class="content-wrapper" style="min-height: 960px;">
+  <section class="content-header">
+    <h1>
+      {{label}}
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a [routerLink]="['/main']">
+          <i class="fa fa-dashboard"></i>首页
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/receipt/list']">收款单列表</a>
+      </li>
+      <li class="active">
+        <a [routerLink]="['/receipt/detail']">{{label}}</a>
+      </li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <div class="box-header"></div>
+          <form class="form-horizontal">
+            <div class="box-body">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputCustom" class="col-sm-3 control-label" style="padding-top: 7px">客户</label>
+                  <div class="col-sm-9">
+                    <select id="exampleInputCustom" name="exampleInputCustom" class="form-control" [(ngModel)]="receipt.customId">
+                      <option value="-1">请选择客户</option>
+                      <option *ngFor="let custom of customs" value="{{custom.id}}">{{custom.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" style="padding-top: 7px">转账列表</label>
+                  <div class="col-sm-9">
+                    <table class="table table-bordered table-striped dataTable" style="font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;border: 1px solid #f4f4f4;">
+                      <thead>
+                      <tr class="row">
+                        <th width="25%">银行账户</th>
+                        <th width="25%">转账金额</th>
+                        <th width="25%">备注</th>
+                        <th width="25%">操作</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let item of transfers;let i = index" class="row">
+                        <td>{{item.accountName}}</td>
+                        <td>{{item.money}}</td>
+                        <td>{{item.extra}}</td>
+                        <td><a class="btn btn-danger btn-sm" (click)="deleteItem(i)" *ngIf="edit">删除</a></td>
+                      </tr>
+                      <tr class="row" *ngIf="edit">
+                        <td colspan="4" class="no-data-prompt"><a class="btn btn-info btn-sm" (click)="createItem()">添加转账</a></td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" style="padding-top: 7px">总额</label>
+                  <label class="col-sm-9 control-label" style="padding-top: 7px">{{receipt.total}}元</label>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-3"></div>
+                  <div class="col-md-6">
+                    <button class="btn btn-primary" (click)="save()" *ngIf="edit">保存</button>
+                    <button class="btn btn-info" (click)="submit()" *ngIf="edit">提交</button>
+                    <button class="btn btn-danger" (click)="delete()" *ngIf="edit&&receipt.number">删除</button>
+                    <button class="btn btn-default" (click)="goBack()">返回</button>
+                  </div>
+                  <div class="col-md-3"></div>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="modal fade" id="receipt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          (click)="cancel()">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">添加转账</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+          <label class="control-label col-md-2 col-sm-2 col-xs-2" style="width: 15%">
+            银行账户
+          </label>
+          <div class="col-sm-10">
+            <select id="exampleInputAccount" name="exampleInputAccount" class="form-control" [(ngModel)]="transfer.accountName">
+              <option value="-1">请选择银行账户</option>
+              <option *ngFor="let account of accounts" value="{{account.name}}">{{account.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+          <label class="control-label col-md-2 col-sm-2 col-xs-2" style="width: 15%">
+            转账金额
+          </label>
+          <div class="col-sm-10">
+            <input type="number" name="itemMoney" class="form-control" [(ngModel)]="transfer.money">
+          </div>
+        </div>
+        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+          <label class="control-label col-md-3 col-sm-3 col-xs-3" style="width: 15%">
+            备注
+          </label>
+          <textarea class="form-control col-md-9 col-xs-9" style="width: 78%;margin-left: 15px" name="itemMoney" [(ngModel)]="transfer.extra"></textarea>
+        </div>
+        <div style="clear: both"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="send()" data-dismiss="modal">确认</button>
+        <button type="button" class="btn btn-default" (click)="cancel()" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

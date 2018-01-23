@@ -1,0 +1,74 @@
+<div class="content-wrapper" style="min-height: 960px;">
+  <section class="content-header">
+    <h1>
+      {{label}}
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a [routerLink]="['/main']">
+          <i class="fa fa-dashboard"></i>首页
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/stock/list']">{{title}}</a>
+      </li>
+      <li class="active">
+        <a [routerLink]="['/stock/detail']">{{label}}</a>
+      </li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <div class="box-header"></div>
+          <form class="form-horizontal">
+            <div class="box-body">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputName" class="col-sm-3 control-label" style="padding-top: 7px">商品名称</label>
+                  <div class="col-sm-9">
+                    <select id="exampleInputName" name="exampleInputName" class="form-control" [(ngModel)]="order.goodId">
+                      <option value="-1">请选择商品</option>
+                      <option *ngFor="let good of goods" value="{{good.id}}">{{good.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group" *ngIf="type==3">
+                  <label for="exampleInputModel" class="col-sm-3 control-label" style="padding-top: 7px">报溢数量</label>
+                  <div class="col-sm-9">
+                    <input type="number" id="exampleInputModel" name="exampleInputModel" class="form-control" placeholder="请输入报溢数量" [(ngModel)]="order.number">
+                  </div>
+                </div>
+                <div class="form-group" *ngIf="type==1">
+                  <label for="exampleInputCost" class="col-sm-3 control-label" style="padding-top: 7px">报警数量</label>
+                  <div class="col-sm-9">
+                    <input type="number" id="exampleInputCost" name="exampleInputCost" class="form-control" placeholder="请输入报警数量" [(ngModel)]="order.number">
+                  </div>
+                </div>
+                <div class="form-group" *ngIf="type==2">
+                  <label for="exampleInputRetail" class="col-sm-3 control-label" style="padding-top: 7px">报损数量</label>
+                  <div class="col-sm-9">
+                    <input type="number" id="exampleInputRetail" name="exampleInputRetail" class="form-control" placeholder="请输入报损数量" [(ngModel)]="order.number">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-3"></div>
+                  <div class="col-md-6">
+                    <button class="btn btn-primary" (click)="save()" *ngIf="edit">保存</button>
+                    <button class="btn btn-info" (click)="submit()" *ngIf="edit">提交</button>
+                    <button class="btn btn-danger" (click)="delete()" *ngIf="edit&&order.id">删除</button>
+                    <button class="btn btn-default" (click)="goBack()">返回</button>
+                  </div>
+                  <div class="col-md-3"></div>
+                </div>
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

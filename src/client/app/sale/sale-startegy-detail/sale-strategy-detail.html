@@ -1,0 +1,68 @@
+<div class="content-wrapper" style="min-height: 960px;">
+  <section class="content-header">
+    <h1>
+      {{label}}
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a [routerLink]="['/main']">
+          <i class="fa fa-dashboard"></i>首页
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/sale/strategy/list']">促销策略列表</a>
+      </li>
+      <li class="active">
+        <a [routerLink]="['/sale/strategy/detail']">{{label}}</a>
+      </li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <div class="box-header"></div>
+          <form class="form-horizontal">
+            <div class="box-body">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputAccount" class="col-sm-3 control-label" style="padding-top: 7px">策略名称</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="exampleInputAccount" name="exampleInputAccount" class="form-control" [(ngModel)]="strategy.name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputExtra" class="col-sm-3 control-label" style="padding-top: 7px">策略内容</label>
+                  <div class="col-sm-9">
+                    <textarea id="exampleInputExtra" name="exampleInputExtra" class="form-control" placeholder="请输入策略内容" [(ngModel)]="strategy.content" rows="5"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputExtra" class="col-sm-3 control-label" style="padding-top: 7px">
+                    <i class="fa fa-calendar"></i>
+                  </label>
+                  <div class="col-sm-9">
+                    <input id="strategyTimePicker" name="daterange" class="date-picker form-control date-range-input" required="required" type="text"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-3"></div>
+                  <div class="col-md-6">
+                    <button class="btn btn-primary" (click)="save()">保存</button>
+                    <button class="btn btn-danger" (click)="delete()" *ngIf="edit">删除</button>
+                    <button class="btn btn-default" (click)="goBack()">返回</button>
+                  </div>
+                  <div class="col-md-3"></div>
+                </div>
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+

@@ -1,0 +1,114 @@
+<div class="content-wrapper" style="min-height: 960px;">
+    <section class="content-header">
+      <h1>
+        经营情况表
+      </h1>
+      <ol class="breadcrumb">
+        <li>
+          <a [routerLink]="['/main']">
+            <i class="fa fa-dashboard"></i>首页
+          </a>
+        </li>
+        <li class="active">
+          <a [routerLink]="['/manage/info']">经营情况</a>
+        </li>
+      </ol>
+    </section>
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <!--<div class="box-header">-->
+            <!--</div>-->
+            <div class="box-body">
+              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" style="width: 100%">
+                            <label for="exampleInputExtra" class="col-sm-3 control-label" style="padding-top: 7px;text-align:right">
+                                <i class="fa fa-calendar"></i>
+                            </label>
+                            <div class="col-sm-9">
+                                <input id="strategyTimePicker" name="daterange" class="date-picker form-control date-range-input" required="required" type="text" style="width:70%"/>
+                                <label class="fa fa-fw fa-search pointer" (click)="search()" style="padding-left: 15px"></label>
+                            </div>
+                        </div>
+                        <!-- <input class="form-control input-sm" type="search" [(ngModel)]="keyword" (keyup.enter)="search()"> -->
+                    </div>
+                    <div class="col-md-3">
+                        <a href="/api/excel/info?id={{manageInfo.id}}&fileName={{file}}" class="btn btn-info btn-sm" *ngIf="show">导出报表</a>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-8">
+                    <table id="example1" class="table table-bordered table-striped dataTable" style="border: 1px solid #f4f4f4;">
+                      <thead>
+                        <tr role="row">
+                            <th width="50%">条目</th>
+                            <th width="50%">金额</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngIf="!show">
+                          <tr>
+                            <td colspan="2" class="no-data-prompt">请选择所需查询的时间段</td>
+                          </tr>
+                      </tbody>
+                      <tbody *ngIf="show">
+                        <tr>
+                            <th>收入类</th>
+                        </tr>
+                        <tr>
+                            <td>销售类收入</td>
+                            <td>{{manageInfo.saleIncome}}</td>
+                        </tr>
+                        <tr>
+                            <td>销售类折让</td>
+                            <td>{{manageInfo.saleDiscount}}</td>
+                        </tr>
+                        <tr>
+                            <td>商品类收入</td>
+                            <td>{{manageInfo.goodsIncome}}</td>
+                        </tr>
+                        <tr>
+                            <td>商品类折让</td>
+                            <td>{{manageInfo.goodsDiscount}}</td>
+                        </tr>
+                        <tr>
+                            <td>总收入</td>
+                            <td>{{manageInfo.saleIncome+manageInfo.goodsIncome}}</td>
+                        </tr>
+                        <tr>
+                            <th>支出类</th>
+                        </tr>
+                        <tr>
+                            <td>销售成本</td>
+                            <td>{{manageInfo.saleCost}}</td>
+                        </tr>
+                        <tr>
+                            <td>商品类支出</td>
+                            <td>{{manageInfo.goodsCost}}</td>
+                        </tr>
+                        <tr>
+                            <td>总支出</td>
+                            <td>{{manageInfo.saleCost+manageInfo.goodsCost}}</td>
+                        </tr>
+                        <tr>
+                            <td>总利润</td>
+                            <td>{{manageInfo.profit}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-md-2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  

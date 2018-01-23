@@ -24,19 +24,34 @@ export class ProjectConfig extends SeedConfig {
       ...this.NPM_DEPENDENCIES,
       // {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
+      { src: 'bootstrap/dist/css/bootstrap.min.css', inject: true }, // inject into css section
+      { src: 'bootstrap/dist/css/bootstrap-theme.min.css', inject: true }, // inject into css section
+      { src: 'bootstrap/dist/css/bootstrap-theme.min.css.map', inject: true }, // inject into css section
+      { src: 'admin-lte/dist/css/AdminLTE.css', inject: true},
+      { src: 'admin-lte/dist/css/skins/_all-skins.css', inject: true},
     ];
 
     // Add `local` third-party libraries to be injected/bundled.
     this.APP_ASSETS = [
       // {src: `${this.APP_SRC}/your-path-to-lib/libs/jquery-ui.js`, inject: true, vendor: false}
       // {src: `${this.CSS_SRC}/path-to-lib/test-lib.css`, inject: true, vendor: false},
-      { src: `${this.APP_SRC}/js/adminlte.min.js`,inject: true, vendor:true },
-      { src: `${this.APP_SRC}/js/bootstrap.min.js`,inject: true, vendor:true },
       { src: `${this.APP_SRC}/js/jquery.min.js`, inject: true, vendor: false },
+      { src: `${this.APP_SRC}/js/bootstrap.min.js`,inject: true, vendor:true },
+      { src: `${this.APP_SRC}/js/pnotify.custom.min.js`, inject: true, vendor: false },
+      { src: `${this.APP_SRC}/js/notification.js`, inject: true, vendor: false },
+      { src: `${this.APP_SRC}/js/adminlte.min.js`,inject: true, vendor:true },
+      { src: `${this.APP_SRC}/js/moment.min.js`, inject: true, vendor: false },
+      { src: `${this.APP_SRC}/js/daterangepicker.js`, inject: true, vendor: false },
 
       { src: `${this.CSS_SRC}/AdminLTE.min.css`, inject: true, vendor: false },
+      { src: `${this.CSS_SRC}/dataTables.bootstrap.min.css`, inject: true, vendor: false },
       { src: `${this.CSS_SRC}/bootstrap.min.css`, inject: true, vendor: false },
       { src: `${this.CSS_SRC}/_all-skins.css`, inject: true, vendor: false },
+      { src: `${this.CSS_SRC}/main.css`, inject: true, vendor: false },
+      { src: `${this.CSS_SRC}/font-awesome.min.css`, inject: true, vendor: false },
+      { src: `${this.CSS_SRC}/pnotify.custom.min.css`, inject: true, vendor: false },
+      { src: `${this.CSS_SRC}/inventory.css`, inject: true, vendor: false },
+      { src: `${this.CSS_SRC}/daterangepicker.css`, inject: true, vendor: false },
     ];
 
     this.ROLLUP_INCLUDE_DIR = [

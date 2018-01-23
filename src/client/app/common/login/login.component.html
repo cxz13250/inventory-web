@@ -1,1 +1,31 @@
-
+<div class="wrapper">
+  <div id="login-panel" class="col-md-12" [ngStyle]="{'background-image': image}">
+    <div id="login-body">
+      <div class="pull-right" style="margin-right: 5%">
+        <div class="login-content">
+          <dl>
+            <dt>库存管理系统</dt>
+            <dd class="login-box" style="display: block">
+              <label><i class="glyphicon glyphicon-user"></i></label>
+              <input type="text" id="username" name="username" placeholder="请输入邮箱/手机" class="login-input" [(ngModel)]="user.email">
+            </dd>
+            <dd class="login-box" style="display: block">
+              <label><i class="glyphicon glyphicon-lock"></i></label>
+              <input type="password" id="password" name="password" placeholder="请输入密码" class="login-input" [(ngModel)]="user.password" (keyup.enter)="login()">
+            </dd>
+            <dd class="login-box">
+              <input type="button" class="login-btn" (click)="login()" value="登录">
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <footer class="login-footer">
+      <!--<div class="clearfix"></div>-->
+      <span>Copy-right:南京大学软件工程与计算Ⅱ第63小组</span><br>
+      <span>南京大学：
+        <a href="https://www.nju.edu.cn/n" target="_blank" class="default underline">https://www.nju.edu.cn/</a>
+      </span>
+    </footer>
+  </div>
+</div>

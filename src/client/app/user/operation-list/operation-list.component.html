@@ -1,0 +1,81 @@
+<div class="content-wrapper" style="min-height: 960px;">
+  <section class="content-header">
+    <h1>
+      日志列表
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a [routerLink]="['/main']">
+          <i class="fa fa-dashboard"></i>首页
+        </a>
+      </li>
+      <li class="active">
+        <a [routerLink]="['/user/list']">日志列表</a>
+      </li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <!--<div class="box-header">-->
+          <!--</div>-->
+          <div class="box-body">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="dataTables_length" id="example1_length">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="dataTables_filter" id="example1_filter">
+                    <label>Search:
+                      <input class="input input-sm" type="search" [(ngModel)]="keyword" (keyup.enter)="search()">
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <table id="example1" class="table table-bordered table-striped dataTable" [(mfSortOrder)]="sortOrder" [(mfSortBy)]="sortBy"
+                         [mfRowsOnPage]="rowsOnPage" [mfData]="operations" (mfOnPageChange)="onPageChange($event)"
+                         [mfActivePage]="activePage" [mfIsServerPagination]="true" #mf="mfDataTable"
+                         [(mfAmountOfRows)]="itemsTotal" (mfSortOrderChange)="onSortOrder($event)" style="border: 1px solid #f4f4f4;">
+                    <thead>
+                    <tr role="row">
+                      <th width="25%">操作者</th>
+                      <th width="25%">IP地址</th>
+                      <th width="25%">操作</th>
+                      <th width="25%">时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr role="row" *ngIf="!operations">
+                      <td colspan="4" class="no-data-prompt">暂无数据</td>
+                    </tr>
+                    <tr role="row" *ngFor="let operation of operations">
+                      <td class="pointer">{{operation.name}}</td>
+                      <td>{{operation.ip}}</td>
+                      <td>{{operation.operation}}</td>
+                      <td>{{operation.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                      <td colspan="4">
+                        <mfBootstrapPaginator class="pull-right"></mfBootstrapPaginator>
+                      </td>
+                    </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+

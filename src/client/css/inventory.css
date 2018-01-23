@@ -1,0 +1,27 @@
+.pointer{
+  cursor: pointer;
+}
+.input{
+  border-radius: 0;
+  box-shadow: none;
+  border-color: #d2d6de;
+}
+.form-control{
+  border-radius: 0;
+  box-shadow: none;
+  border-color: #d2d6de;
+}
+.form-group .form-group-my{
+  clear: both;
+}
+.no-data-prompt {
+  color: gray;
+  text-align: center;
+}
+.pull-right {
+  float: right;
+}
+body {
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+
