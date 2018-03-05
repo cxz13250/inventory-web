@@ -1,5 +1,5 @@
 #技术简介
-Angular2+Gulp+SystemJS+AdminLTE
+AngularSeed4+AdminLTE
 
 #项目使用
 下载nodejs
